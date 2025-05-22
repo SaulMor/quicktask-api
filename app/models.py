@@ -1,12 +1,15 @@
-from sqlalchemy import Column, String, DateTime, Integer, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
 import uuid
 
+from sqlalchemy import Column, DateTime, ForeignKey, String
+from sqlalchemy.orm import relationship
+
 from app.db import Base
+
 
 class User(Base):
     __tablename__ = "users"
     username = Column(String, primary_key=True, index=True)
+    email = Column(String, unique=True, nullable=False, index=True)
     hashed_password = Column(String, nullable=False)
 
     tasks = relationship("Task", back_populates="owner_rel")
