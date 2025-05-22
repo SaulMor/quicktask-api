@@ -10,15 +10,9 @@ from pydantic import BaseModel, EmailStr
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.auth import (
-    ACCESS_TOKEN_EXPIRE_MINUTES,
-    Token,
-    User,
-    authenticate_user,
-    create_access_token,
-    get_current_user,
-    get_password_hash,
-)
+from app.auth import (ACCESS_TOKEN_EXPIRE_MINUTES, Token, User,
+                      authenticate_user, create_access_token, get_current_user,
+                      get_password_hash)
 from app.db import get_db
 from app.email_tasks import send_reminder_email
 from app.models import Task as TaskModel
